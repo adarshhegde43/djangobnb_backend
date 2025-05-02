@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("DEBUG" , default=0))
 
-ALLOWED_HOSTS = ['157.245.99.250'] # os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ["157.245.99.250"]
 
 AUTH_USER_MODEL = 'useraccount.User'
 
@@ -72,6 +72,14 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:8000',
+    'http://127.0.0.1:3000',
+    'http://157.245.99.250',
+    'http://157.245.99.250:1337'
+]
+
+CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:8000',
     'http://127.0.0.1:3000',
