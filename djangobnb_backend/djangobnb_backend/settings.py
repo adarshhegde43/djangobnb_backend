@@ -79,6 +79,14 @@ CORS_TRUSTED_ORIGINS = [
     'http://157.245.99.250:1337'
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:8000',
+    'http://127.0.0.1:3000',
+    'http://157.245.99.250',
+    'http://157.245.99.250:1337'
+]
+
 CORS_ORIGINS_WHITELIST = [
     'http://localhost:3000',
     'http://127.0.0.1:8000',
