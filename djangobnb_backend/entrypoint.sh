@@ -1,6 +1,11 @@
 #!/bin/bash
 
-set -euo pipefail  # Strict error handling
+set -eo pipefail  # Strict error handling
+
+# Default values if not set
+DATABASE=${DATABASE:-}
+SQL_HOST=${SQL_HOST:-db}  # Default to 'db' service name
+SQL_PORT=${SQL_PORT:-5432}
 
 # Self-healing permissions (safety net)
 [ "$(stat -c %a "$0")" -gt 755 ] && chmod 755 "$0"
