@@ -17,7 +17,10 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY --chmod=755 --chown=1000:1000 ./entrypoint.sh . 
+COPY ./entrypoint.sh .
+RUN chmod 755 /usr/src/djangobnb_backend/entrypoint.sh && \
+    chown 1000:1000 /usr/src/djangobnb_backend/entrypoint.sh
+    
 COPY . .
 
 ENTRYPOINT ["/usr/src/djangobnb_backend/entrypoint.sh"]
