@@ -1,4 +1,9 @@
-#!/bin/sh
+#!/bin/bash
+
+set -euo pipefail  # Strict error handling
+
+# Self-healing permissions (safety net)
+[ "$(stat -c %a "$0")" -gt 755 ] && chmod 755 "$0"
 
 if [ "$DATABASE" = "postgres" ] 
 then
@@ -15,4 +20,5 @@ python manage.py makemigrations
 python manage.py migrate
 
 exec "$@"
+
 
