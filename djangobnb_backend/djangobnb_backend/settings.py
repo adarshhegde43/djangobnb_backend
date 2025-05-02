@@ -18,9 +18,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False #bool(os.environ.get("DEBUG" , default=0))
+DEBUG = True #bool(os.environ.get("DEBUG" , default=0))
 
-ALLOWED_HOSTS = ["157.245.99.250"]
+ALLOWED_HOSTS = ["localhost" , "0.0.0.0"]
 
 AUTH_USER_MODEL = 'useraccount.User'
 
@@ -54,6 +54,12 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = None
 
 REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+    ],
+    
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
@@ -67,32 +73,19 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:8000',
     'http://127.0.0.1:3000',
-    'http://157.245.99.250',
-    'http://157.245.99.250:1337'
+    # 'http://157.245.99.250',
+    # 'http://157.245.99.250:1337'
 ]
 
-CORS_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:8000',
-    'http://127.0.0.1:3000',
-    'http://157.245.99.250',
-    'http://157.245.99.250:1337'
-]
-
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:8000',
-    'http://127.0.0.1:3000',
-    'http://157.245.99.250',
-    'http://157.245.99.250:1337'
-]
+CORS_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS
+CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS
 
 CORS_ORIGINS_WHITELIST = [
     'http://localhost:3000',
     'http://127.0.0.1:8000',
     'http://127.0.0.1:3000',
-    'http://157.245.99.250',
-    'http://157.245.99.250:1337'
+    # 'http://157.245.99.250',
+    # 'http://157.245.99.250:1337'
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
